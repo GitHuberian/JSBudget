@@ -184,7 +184,12 @@ var UIController = (function(){
             document.querySelector(DOMStrings.budgetLabel).textContent = obj.budget;
             document.querySelector(DOMStrings.incomesLabel).textContent = obj.totalInc;
             document.querySelector(DOMStrings.expensesLabel).textContent = obj.totalExp;
-            document.querySelector(DOMStrings.percentageLabel).textContent = obj.totalPer;
+            if(obj.percentage > 0){
+                document.querySelector(DOMStrings.percentageLabel).textContent = obj.totalPer+"%";
+            }else
+            {
+                document.querySelector(DOMStrings.percentageLabel).textContent = "---";
+            }
 
         },
         getDOMStrings: function(){
@@ -250,6 +255,13 @@ var controller = (function(budgetCtlr, UICtlr){
     return {
         init: function(){
             console.log('app started');
+            //reset the budget on the UI
+            UICtlr.displayBudget({
+                budget: 0,
+                totalInc: 0,
+                totalExp: 0,
+                totalPer: 0
+            });
             setupEventListeners();
         }
     };
