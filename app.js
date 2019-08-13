@@ -57,7 +57,7 @@ var budgetController = (function(){//anonymous function is declared and inmediat
             
             //push it into the data structure
             data.allItems[type].push(newItem);//add the item to end of the inc/exp array
-            console.log(data.allItems[type].length);
+            //console.log(data.allItems[type].length);
             
             //return the element
             return newItem;

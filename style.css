@@ -33,7 +33,7 @@ body {
 
 .top {
     height: 40vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(back.png);
+    /*background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(back.png);*/
     background-size: cover;
     background-position: center;
     position: relative;
@@ -53,6 +53,7 @@ body {
     text-align: center;
     margin-bottom: 10px;
     font-weight: 300;
+    color:#555;
 }
 
 .budget__value {
@@ -61,6 +62,7 @@ body {
     text-align: center;
     margin-bottom: 25px;
     letter-spacing: 2px;
+    color:#555;
 }
 
 .budget__income,
@@ -71,11 +73,29 @@ body {
 
 .budget__income {
     margin-bottom: 10px;
-    background-color: #28B9B5;
+    border-radius: 5px;
+    font-weight: bold;
+    background: #f9f9f9;
+    background: -moz-linear-gradient(45deg, #f9f9f9 1%, #f7f7f7 50%, #bffcfa 50%, #8ff9f6 100%);
+    background: -webkit-linear-gradient(45deg, #f9f9f9 1%,#f7f7f7 50%,#bffcfa 50%,#8ff9f6 100%);
+    background: linear-gradient(45deg, #f9f9f9 1%,#f7f7f7 50%,#bffcfa 50%,#8ff9f6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#8ff9f6',GradientType=1 );
+-webkit-box-shadow: 0px 0px 5px 0px rgba(184,184,184,1);
+-moz-box-shadow: 0px 0px 5px 0px rgba(184,184,184,1);
+box-shadow: 0px 0px 5px 0px rgba(184,184,184,1);
 }
 
 .budget__expenses {
-    background-color: #FF5049;
+    border-radius: 5px;
+    font-weight: bold;
+    background: #f9f9f9;
+    background: -moz-linear-gradient(45deg, #f9f9f9 1%, #f7f7f7 50%, #bffcfa 50%, #8ff9f6 100%);
+    background: -webkit-linear-gradient(45deg, #f9f9f9 1%,#f7f7f7 50%,#bffcfa 50%,#8ff9f6 100%);
+    background: linear-gradient(45deg, #f9f9f9 1%,#f7f7f7 50%,#bffcfa 50%,#8ff9f6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#8ff9f6',GradientType=1 );
+-webkit-box-shadow: 0px 0px 5px 0px rgba(184,184,184,1);
+-moz-box-shadow: 0px 0px 5px 0px rgba(184,184,184,1);
+box-shadow: 0px 0px 5px 0px rgba(184,184,184,1);
 }
 
 .budget__income--text,
@@ -102,7 +122,7 @@ body {
 }
 
 .budget__expenses--percentage {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.5);
     text-align: center;
     border-radius: 3px;
 }
@@ -125,15 +145,16 @@ body {
 }
 
 .add__type {
-    width: 55px;
+    width: auto;
     border: 1px solid #e7e7e7;
-    height: 44px;
-    font-size: 18px;
-    color: inherit;
+    height: 3rem;
+    font-size: 0.8rem;
+    color: #555;
     background-color: #fff;
     margin-right: 10px;
-    font-weight: 300;
     transition: border 0.3s;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
 .add__description,
@@ -141,27 +162,40 @@ body {
     border: 1px solid #e7e7e7;
     background-color: #fff;
     color: inherit;
-    font-family: inherit;
-    font-size: 14px;
-    padding: 12px 15px;
+    font-size: 0.8rem;
+    padding: 15px 15px;
     margin-right: 10px;
     border-radius: 5px;
     transition: border 0.3s;
+    text-transform: capitalize;
+    font-weight: bold;
 }
 
 .add__description { width: 400px;}
 .add__value { width: 100px;}
 
 .add__btn {
-    font-size: 35px;
-    background: none;
-    border: none;
-    color: #28B9B5;
+    color: white;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
     line-height: 1.1;
     margin-left: 10px;
+    background: #773FFB;
+    border: 1px solid #773FFB;
+    border-radius: 50px;
+    padding: 10px 45px;
+}
+
+.add__btn > i{
+    font-size: 1.5rem;
+    vertical-align: middle;
+}
+
+.add__btn > span{
+    vertical-align: middle;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .add__btn:active { transform: translateY(2px); }
@@ -170,7 +204,7 @@ body {
 .add__description:focus,
 .add__value:focus {
     outline: none;
-    border: 1px solid #28B9B5;
+    border: 1px solid #773FFB;
 }
 
 .add__btn:focus { outline: none; }
@@ -197,10 +231,9 @@ h2 {
     font-size: 18px;
     font-weight: 400;
     margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
 }
-
-.icome__title { color: #28B9B5; }
-.expenses__title { color: #FF5049; }
 
 .item {
     padding: 13px;
