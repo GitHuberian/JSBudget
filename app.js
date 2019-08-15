@@ -5,6 +5,21 @@ var budgetController = (function(){//anonymous function is declared and inmediat
         this.id = id;
         this.description = description;
         this.value = value;
+        this.percentage = -1;
+    };
+
+    Expense.prototype.calcPercentage = function(totalIncome){
+
+        if(totalIncome>0){
+            this.percentage = Math.round((this.value/totalIncome)*100);
+        }else{
+            this.percentage = -1;
+        }
+        
+    };
+
+    Expense.prototype.getPercentage = function(){
+        return this.percentage;
     };
 
     var Income = function(id, description, value){
@@ -93,6 +108,18 @@ var budgetController = (function(){//anonymous function is declared and inmediat
                 data.percentage = -1;
             }
         },
+        calculatePercentages: function(){
+
+            data.allItems.exp.forEach(function(currentValue){
+                currentValue.calcPercentage(data.totals.inc);
+            });
+        },
+        getPercentage: function(){
+            var allPerc = data.allItems.exp.map(function(currentValue){
+                return currentValue.getPercentage();
+            });
+            return allPerc;
+        },
         getBudget: function(){
             return {
                 budget: data.budget,
@@ -139,7 +166,6 @@ var UIController = (function(){
                 value: parseFloat(document.querySelector(DOMStrings.inputValue).value)
             };
         }, 
-
         addListItem: function(data, type){
 
             var html, newHtml, element;
@@ -248,6 +274,18 @@ var controller = (function(budgetCtlr, UICtlr){
         
     };
 
+    var updatePercentages = function(){
+        //calculate percentages
+        budgetCtlr.calculatePercentages();
+
+        //read percentages fromthe budget controller
+        var percentages = budgetCtlr.getPercentage();
+
+        //update the UI with the new percentages
+        console.log(percentages);
+        
+    };
+
     var ctrlAddItem = function(){
         
         var input, newItem;
@@ -267,6 +305,9 @@ var controller = (function(budgetCtlr, UICtlr){
 
             //calculate the budget
             updateBudget();
+
+            //calculate and update percentages
+            updatePercentages();
         }
     }
 
