@@ -155,7 +155,8 @@ var UIController = (function(){
         incomesLabel:'.budget__income--value',
         expensesLabel:'.budget__expenses--value',
         percentageLabel:'.budget__expenses--percentage',
-        container:'.container'
+        container:'.container',
+        expPercentageLabel: '.item__percentage'
     };
 
     return{
@@ -230,13 +231,29 @@ var UIController = (function(){
             document.querySelector(DOMStrings.budgetLabel).textContent = obj.budget;
             document.querySelector(DOMStrings.incomesLabel).textContent = obj.totalInc;
             document.querySelector(DOMStrings.expensesLabel).textContent = obj.totalExp;
-            if(obj.percentage > 0){
-                document.querySelector(DOMStrings.percentageLabel).textContent = obj.totalPer+"%";
+
+            if(obj.totalExp > 0){
+                document.querySelector(DOMStrings.percentageLabel).textContent = obj.totalExp+"%";
             }else
             {
                 document.querySelector(DOMStrings.percentageLabel).textContent = "---";
             }
 
+        },
+        displayPercentages: function(percentages){
+            var fields = document.querySelectorAll(DOMStrings.expPercentageLabel);
+            var nodeListForEach = function(list, callback){
+                for(var i = 0; i<list.length; i++){
+                    callback(list[i], i);
+                }
+            };
+            nodeListForEach(fields, function(currentValue,index){
+                if(percentages[index] > 0){
+                    currentValue.textContent = percentages[index] + '%';
+                }else{
+                    currentValue.textContent = '---';
+                }
+            });
         },
         getDOMStrings: function(){
             return DOMStrings;
@@ -282,7 +299,7 @@ var controller = (function(budgetCtlr, UICtlr){
         var percentages = budgetCtlr.getPercentage();
 
         //update the UI with the new percentages
-        console.log(percentages);
+        UICtlr.displayPercentages(percentages);
         
     };
 
