@@ -119,6 +119,7 @@ box-shadow: 0px 0px 5px 0px rgba(184,184,184,1);
     font-size: 11px;
     padding: 3px 0;
     margin-left: 10px;
+    color: #808080;
 }
 
 .budget__expenses--percentage {
